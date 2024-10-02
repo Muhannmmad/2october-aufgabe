@@ -33,9 +33,10 @@ class ProfileScreen extends StatelessWidget {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Profile',
+            'News',
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -44,18 +45,9 @@ class ProfileScreen extends StatelessWidget {
           ),
           Center(child: SizedBox(height: 20)),
           Icon(
-            Icons.account_circle,
+            Icons.newspaper,
             size: 80,
             color: Colors.black,
-          ),
-          SizedBox(height: 10),
-          Text(
-            'Max Mustermann',
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.black,
-              fontWeight: FontWeight.w500,
-            ),
           ),
         ],
       ),
