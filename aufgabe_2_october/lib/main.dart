@@ -1,3 +1,6 @@
+import 'package:aufgabe_2_october/likes.dart';
+import 'package:aufgabe_2_october/news.dart';
+import 'package:aufgabe_2_october/profile.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,61 +14,53 @@ class MyApp extends StatelessWidget {
       title: 'MyApp',
       theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)),
-      home: ProfileScreen(),
+      home: AppHome(),
     );
   }
 }
 
-class ProfileScreen extends StatelessWidget {
+class AppHome extends StatefulWidget {
+  @override
+  AppHomeState createState() => AppHomeState();
+}
+
+class AppHomeState extends State<AppHome> {
+  int currentPageIndex = 0;
+
+  final List<Widget> screens = [
+    NewsScreen(),
+    LikeScreen(),
+    ProfileScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green, // Light greenish color for the AppBar
-        elevation: 0,
-        title: Text(
-          'MyApp',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-          ),
-        ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'News',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
-          Center(child: SizedBox(height: 20)),
-          Icon(
-            Icons.newspaper,
-            size: 80,
-            color: Colors.black,
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        indicatorColor: Colors.green,
+        selectedIndex: currentPageIndex,
+        destinations: const [
+          NavigationDestination(
             icon: Icon(Icons.calendar_today),
             label: 'News',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.favorite),
             label: 'Likes',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.account_circle),
             label: 'Profile',
           ),
         ],
+      ),
+      body: Center(
+        child: screens[currentPageIndex],
       ),
     );
   }
