@@ -59,6 +59,22 @@ class ProfileScreen extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            label: 'News',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Likes',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Profile',
+          ),
+        ],
+      ),
     );
   }
 }
