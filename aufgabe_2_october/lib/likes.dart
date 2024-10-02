@@ -31,13 +31,16 @@ class LikeScreen extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-            child: Text(
-              'Hier findest du deine gelikten Nachrichten',
-              style: TextStyle(
-                fontSize: 24,
-                color: Colors.black,
-                fontWeight: FontWeight.w500,
+          Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Center(
+              child: Text(
+                'Hier findest du deine gelikten Nachrichten',
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ),
